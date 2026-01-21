@@ -29,28 +29,18 @@
 `Java` • `Python` • `C` • `C++`
 
 ### 🤖 AI / ML
-`Machine Learning` • `NLP` • `BERT` • `RAG`  
+`Machine Learning` • `NLP`  • `RAG`  
 `LangChain` • `FAISS` • `Hugging Face`
 
 ### 🌐 Development
-`Android (Java, XML)` • `Streamlit` • `Flask` • `React Native (Expo)`
+ • `Streamlit`  • `React Native (Expo)`
 
 ### 🛠 Tools
-`Git & GitHub` • `VS Code` • `Android Studio` • `Google Colab`
+`Git & GitHub` • `VS Code`  • `Google Colab`
 
 ---
 
-## 🚀 Featured Projects 🌟
-- 🔍 **Business Text Classification System**  
-  ML + BERT based system classifying queries into Technical, Billing & General
 
-- 🤖 **Agentic RAG Chatbot**  
-  Offline, privacy-first chatbot using FAISS, LangChain & Ollama
-
-- 📅 **TrackIt – Smart Calendar App**  
-  Productivity-focused calendar & task manager
-
----
 
 ## 📊 GitHub Stats 💫
 <p align="center">
