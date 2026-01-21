@@ -26,7 +26,7 @@
 ## 🧠 Tech Stack ✨
 
 ### 💻 Languages
-`Java` • `Python` • `C` • `C++`
+ • `Python` • `C` • `C++` • `SQL`
 
 ### 🤖 AI / ML
 `Machine Learning` • `NLP`  • `RAG`  
