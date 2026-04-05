@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isha Nayal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Fira Code', monospace;
+      background-color: #000000;
+      color: #ff00bf;
+      line-height: 1.6;
+      padding: 80px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    a {
+      color: #e134ff;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-bottom 0.2s;
+    }
+
+    a:hover {
+      border-bottom: 1px solid #a406ff;
+    }
+
+    header {
+      margin-bottom: 60px;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .meta {
+      font-size: 0.85rem;
+      color: #fff700;
+      margin-bottom: 20px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .meta-label {
+      width: 40px;
+      text-transform: uppercase;
+    }
+
+    .meta-separator {
+      margin: 0 8px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      font-size: 1.2rem;
+      color: #1bbeff;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover {
+      color: #ff00d4;
+      border-bottom: none;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #56ff08;
+      margin: 40px 0;
+      width: 1000px;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+    }
+
+    .item {
+      display: flex;
+      margin-bottom: 24px;
+    }
+
+    .item-tags {
+      width: 120px;
+      flex-shrink: 0;
+      font-size: 0.9 rem;
+      color: #00ccff;
+      text-transform: uppercase;
+      padding-top: 6px;
+      letter-spacing: 1px;
+    }
+
+    .item-content {
+      flex-grow: 1;
+    }
+
+    .item-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .item-desc {
+      font-size: 0.9rem;
+      color: #415dff;
+      line-height: 1.4;
+    }
+
+    #about p {
+      font-size: 1rem;
+      color: #df10ff;
+    }
+
+    /* Skills Section Styles */
+    #skills {
+      margin-bottom: 60px;
+    }
+
+    .skills-container {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+      overflow: hidden;
+      padding: 10px 0;
+    }
+
+    .skills-wrapper {
+      display: flex;
+      gap: 15px;
+      width: auto;
+    }
+
+    .skill-btn {
+      display: inline-block;
+      padding: 10px 18px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid #ff00f7;
+      border-radius: 25px;
+      color: #ffffff;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .skill-btn:hover {
+      background: rgba(0, 225, 255, 0.33);
+      border-color: #ffae0d;
+      box-shadow: 0 0 15px rgba(255, 0, 191, 0.5);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 40px 20px;
+      }
+
+      .item {
+        flex-direction: column;
+      }
+
+      .item-tags {
+        margin-bottom: 8px;
+        width: auto;
+      }
+
+      .skills-container {
+        gap: 10px;
+      }
+
+      .skill-btn {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* GSAP Animation Styles */
+    .fade-in {
+      opacity: 0;
+    }
+
+    .slide-in {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .stagger-item {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  </style>
+  <!-- GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+  <header>
+    <h1>Isha Nayal</h1>
+
+    <div class="meta">
+      <div class="meta-item">
+      </div>
+      <div class="meta-item">
+        <span class="meta-separator">ai</span>
+        <span class="meta-separator">·</span>
+        <span>ml · dl · research</span>
+      </div>
+    </div>
+
+    <div class="social-links">
+      <a href="https://github.com/IshaNayal" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+          </path>
+        </svg>
+      </a>
+
+      <a href="https://www.linkedin.com/in/isha-nayal/" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </a>
+      <a href="mailto:ishanayal16@gmail.com">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </a>
+    </div>
+
+    <hr>
+  </header>
+
+  <section id="about">
+    <h2>about</h2>
+    <p>19. Just a girl cuirous about tech - building things, debugging both code and life, and figuring out how stuff
+      actually works behind the scenes.<br> i enjoy exploring different domains, experimenting with ideas, and learning
+      by doing. </p>
+  </section>
+
+  <section id="projects">
+    <h2>projects</h2>
+
+    <div class="item">
+      <div class="item-tags">AUTOML</div>
+      <div class="item-content">
+        <a href="#" class="item-title">Sharpner — no-code AutoML platform</a>
+        <p class="item-desc">build, train, and compare ml models through a ui. no code required.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-tags">AGENTS</div>
+      <div class="item-content">
+        <a href="#" class="item-title">kenkyū — autonomous AI research agent</a>
+        <p class="item-desc">plans queries, searches the web, and synthesizes reports using langgraph + ollama.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-tags">CV · YOLO</div>
+      <div class="item-content">
+        <a href="#" class="item-title">anzen 安全 — real-time hazard detection</a>
+        <p class="item-desc">detects vehicles, pedestrians, and road hazards with severity-based alerts via yolov8.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="paper-builds">
+    <h2>Experience</h2>
+
+    <div class="item">
+      <div class="item-tags">CV · RESNET</div>
+      <div class="item-content">
+        <a href="#" class="item-title">ResNet18 transfer learning on CIFAR-10</a>
+        <p class="item-desc">fine-tuned resnet18 on cifar-10 using imagenet weights after reading the resnet paper.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-tags">CV · YOLO</div>
+      <div class="item-content">
+        <a href="#" class="item-title">anzen 安全 — real-time hazard detection (YOLOv8)</a>
+        <p class="item-desc">applied yolov8 to road safety after working through the original yolo paper.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="paper-implementations">
+    <h2>paper implementations</h2>
+
+    <div class="item">
+      <div class="item-tags">CV · CNN</div>
+      <div class="item-content">
+        <a href="#" class="item-title">AlexNet — Krizhevsky et al., 2012</a>
+        <p class="item-desc">from-scratch pytorch implementation of the architecture that started the deep learning era.
+        </p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-tags">CV · RESNET</div>
+      <div class="item-content">
+        <a href="#" class="item-title">ResNet — He et al., 2015</a>
+        <p class="item-desc">implemented residual connections from scratch; trained on standard benchmarks.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-tags">CV · DETECTION</div>
+      <div class="item-content">
+        <a href="#" class="item-title">YOLOv1 — Redmon et al., 2015</a>
+        <p class="item-desc">full from-scratch implementation of single-shot object detection in pytorch.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>skills</h2>
+    <div class="skills-container">
+      <div class="skills-wrapper">
+        <span class="skill-btn">Python</span>
+        <span class="skill-btn">SQL</span>
+        <span class="skill-btn">R</span>
+        <span class="skill-btn">Redis</span>
+        <span class="skill-btn">FAISS</span>
+        <span class="skill-btn">Chroma DB</span>
+        <span class="skill-btn">Numpy</span>
+        <span class="skill-btn">Pandas</span>
+        <span class="skill-btn">Matplotlib</span>
+        <span class="skill-btn">Seaborn</span>
+        <span class="skill-btn">Plotly</span>
+        <span class="skill-btn">Beautiful Soup</span>
+        <span class="skill-btn">Selenium</span>
+        <span class="skill-btn">Scikit Learn</span>
+        <span class="skill-btn">XG Boost</span>
+        <span class="skill-btn">Cat Boost</span>
+        <span class="skill-btn">Pytorch</span>
+        <span class="skill-btn">TensorFlow</span>
+        <span class="skill-btn">Transformers</span>
+        <span class="skill-btn">XBERT</span>
+        <span class="skill-btn">ML Flow</span>
+        <span class="skill-btn">Weights & Biases</span>
+        <span class="skill-btn">Optuna</span>
+        <span class="skill-btn">Ray Tune</span>
+        <span class="skill-btn">FastAPI</span>
+        <span class="skill-btn">Streamlit</span>
+        <span class="skill-btn">Pickle</span>
+        <span class="skill-btn">Joblib</span>
+        <span class="skill-btn">DVC</span>
+        <span class="skill-btn">RAG</span>
+        <!-- Duplicate for seamless loop -->
+       <span class="skill-btn">Python</span>
+        <span class="skill-btn">SQL</span>
+        <span class="skill-btn">R</span>
+        <span class="skill-btn">Redis</span>
+        <span class="skill-btn">FAISS</span>
+        <span class="skill-btn">Chroma DB</span>
+        <span class="skill-btn">Numpy</span>
+        <span class="skill-btn">Pandas</span>
+        <span class="skill-btn">Matplotlib</span>
+        <span class="skill-btn">Seaborn</span>
+        <span class="skill-btn">Plotly</span>
+        <span class="skill-btn">Beautiful Soup</span>
+        <span class="skill-btn">Selenium</span>
+        <span class="skill-btn">Scikit Learn</span>
+        <span class="skill-btn">XG Boost</span>
+        <span class="skill-btn">Cat Boost</span>
+        <span class="skill-btn">Pytorch</span>
+        <span class="skill-btn">TensorFlow</span>
+        <span class="skill-btn">Transformers</span>
+        <span class="skill-btn">XBERT</span>
+        <span class="skill-btn">ML Flow</span>
+        <span class="skill-btn">Weights & Biases</span>
+        <span class="skill-btn">Optuna</span>
+        <span class="skill-btn">Ray Tune</span>
+        <span class="skill-btn">FastAPI</span>
+        <span class="skill-btn">Streamlit</span>
+        <span class="skill-btn">Pickle</span>
+        <span class="skill-btn">Joblib</span>
+        <span class="skill-btn">DVC</span>
+        <span class="skill-btn">RAG</span>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+<!-- GSAP Animations -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. HEADER ANIMATIONS - Entrance sequence
+    gsap.to('header h1', {
+      duration: 1.2,
+      delay: 0.2,
+      opacity: 1,
+      y: 0,
+      ease: 'power3.out',
+    });
+
+    gsap.to('.meta', {
+      duration: 1,
+      delay: 0.4,
+      opacity: 1,
+      y: 0,
+      ease: 'power2.out',
+    });
+
+    gsap.to('.social-links a', {
+      duration: 0.8,
+      delay: (index) => 0.6 + index * 0.1,
+      opacity: 1,
+      y: 0,
+      ease: 'back.out(1.7)',
+      stagger: 0.05,
+    });
+
+    // 2. SECTION ENTRANCE ANIMATIONS with ScrollTrigger
+    gsap.utils.toArray('section').forEach((section, index) => {
+      gsap.fromTo(section,
+        {
+          opacity: 0,
+          y: 30,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            end: 'top 50%',
+            scrub: false,
+          },
+          ease: 'power2.out',
+        }
+      );
+    });
+
+    // 3. ITEM STAGGER ANIMATIONS
+    gsap.utils.toArray('.item').forEach((item, index) => {
+      gsap.fromTo(item,
+        {
+          opacity: 0,
+          x: -20,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.6,
+          delay: index * 0.1,
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+          ease: 'power2.out',
+        }
+      );
+    });
+
+    // 4. SECTION TITLES ANIMATION
+    gsap.utils.toArray('section h2').forEach((title) => {
+      gsap.fromTo(title,
+        {
+          opacity: 0,
+          scale: 0.9,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.7,
+          scrollTrigger: {
+            trigger: title,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+          ease: 'back.out(1.2)',
+        }
+      );
+    });
+
+    // 5. INTERACTIVE LINK ANIMATIONS
+    const links = document.querySelectorAll('.item-title, a');
+    links.forEach((link) => {
+      link.addEventListener('mouseenter', function () {
+        gsap.to(this, {
+          duration: 0.3,
+          y: -3,
+          ease: 'power2.out',
+        });
+      });
+
+      link.addEventListener('mouseleave', function () {
+        gsap.to(this, {
+          duration: 0.3,
+          y: 0,
+          ease: 'power2.out',
+        });
+      });
+    });
+
+    // 5.5 SKILLS BUTTONS - CONTINUOUS HORIZONTAL SCROLL ANIMATION
+    const skillsWrapper = document.querySelector('.skills-wrapper');
+
+    if (skillsWrapper) {
+      // Get the width of first 15 items (one full set)
+      const skillBtns = document.querySelectorAll('.skill-btn');
+      const firstSetWidth = Array.from(skillBtns).slice(0, 15).reduce((sum, btn) => {
+        return sum + btn.offsetWidth + 15; // 15 is the gap
+      }, 0);
+
+      // Continuous horizontal animation - scrolls from right to left
+      gsap.to('.skills-wrapper', {
+        x: -firstSetWidth,
+        duration: 25,
+        ease: 'none',
+        repeat: -1,
+        modifiers: {
+          x: gsap.utils.unitize(x => parseFloat(x) % firstSetWidth) // Seamless loop
+        }
+      });
+
+      // Interactive hover effect on individual buttons
+      document.querySelectorAll('.skill-btn').forEach((btn) => {
+        btn.addEventListener('mouseenter', function () {
+          gsap.to(this, {
+            duration: 0.3,
+            scale: 1.15,
+            boxShadow: '0 0 20px rgba(255, 0, 191, 0.8)',
+            ease: 'back.out(1.5)',
+          });
+        });
+
+        btn.addEventListener('mouseleave', function () {
+          gsap.to(this, {
+            duration: 0.3,
+            scale: 1,
+            boxShadow: 'none',
+            ease: 'power2.out',
+          });
+        });
+      });
+
+      // Pause animation on hover
+      const skillsContainer = document.querySelector('.skills-container');
+      skillsContainer.addEventListener('mouseenter', function () {
+        gsap.to('.skills-wrapper', {
+          paused: true,
+        });
+      });
+
+      skillsContainer.addEventListener('mouseleave', function () {
+        gsap.to('.skills-wrapper', {
+          paused: false,
+        });
+      });
+    }
+
+    // 6. HR ANIMATION (horizontal rule) - Enhanced with glow and pulse
+    const hrElement = document.querySelector('hr');
+
+    // Initial scale-in animation
+    gsap.fromTo('hr',
+      {
+        opacity: 0,
+        scaleX: 0,
+      },
+      {
+        opacity: 1,
+        scaleX: 1,
+        duration: 1.2,
+        delay: 0.8,
+        transformOrigin: 'center',
+        ease: 'power3.out',
+      }
+    );
+
+    // Glow pulse animation on the hr element
+    gsap.to('hr', {
+      boxShadow: '0 0 20px #56ff08, 0 0 40px #56ff08',
+      duration: 2,
+      delay: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut',
+    });
+
+    // Subtle width oscillation
+    gsap.to('hr', {
+      width: '1020px',
+      duration: 3,
+      delay: 2.5,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut',
+    });
+
+    // 7. MOUSE PARALLAX EFFECT ON HOVER
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = (e.clientX / window.innerWidth) * 20 - 10;
+      const mouseY = (e.clientY / window.innerHeight) * 20 - 10;
+
+      gsap.to('header h1', {
+        duration: 1,
+        rotationZ: mouseX * 0.05,
+        y: mouseY * 0.02,
+        overwrite: 'auto',
+      });
+    });
+  });
+</script>
+
+<!-- Other Script Files -->
+<script src="script.js"></script>
+
+</html>
