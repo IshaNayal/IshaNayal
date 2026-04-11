@@ -11,7 +11,35 @@
     href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     rel="stylesheet">
   <style>
-    /* Reset */
+    
+    :root {
+      
+      --bg-primary: #000000;
+      --bg-secondary: #1a1a2e;
+      --text-primary: #ff00bf;
+      --text-secondary: #fff700;
+      --text-tertiary: #415dff;
+      --accent-1: #e134ff;
+      --accent-2: #1bbeff;
+      --accent-3: #56ff08;
+      --accent-4: #00d4ff;
+      --border-color: #56ff08;
+    }
+
+    body.light-mode {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f5f5;
+      --text-primary: #1a1a2e;
+      --text-secondary: #333333;
+      --text-tertiary: #0066ff;
+      --accent-1: #6600cc;
+      --accent-2: #0099ff;
+      --accent-3: #00b300;
+      --accent-4: #0099ff;
+      --border-color: #0099ff;
+    }
+
+    
     * {
       margin: 0;
       padding: 0;
@@ -20,27 +48,29 @@
 
     body {
       font-family: 'Fira Code', monospace;
-      background-color: #000000;
-      color: #ff00bf;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
       line-height: 1.6;
       padding: 80px 40px;
       max-width: 800px;
       margin: 0 auto;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     a {
-      color: #e134ff;
+      color: var(--accent-1);
       text-decoration: none;
       border-bottom: 1px solid transparent;
-      transition: border-bottom 0.2s;
+      transition: border-bottom 0.2s, color 0.3s ease;
     }
 
     a:hover {
-      border-bottom: 1px solid #a406ff;
+      border-bottom: 1px solid var(--accent-1);
     }
 
     header {
       margin-bottom: 60px;
+      position: relative;
     }
 
     header h1 {
@@ -49,12 +79,47 @@
       font-weight: 700;
       font-size: 3rem;
       margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+
+    
+    .theme-toggle {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--accent-3);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    body.light-mode .theme-toggle {
+      background: var(--accent-2);
+      box-shadow: 0 4px 15px rgba(0, 153, 255, 0.3);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(86, 255, 8, 0.4);
+    }
+
+    body.light-mode .theme-toggle:hover {
+      box-shadow: 0 6px 20px rgba(0, 153, 255, 0.5);
     }
 
     .meta {
       font-size: 0.85rem;
-      color: #fff700;
+      color: var(--text-secondary);
       margin-bottom: 20px;
+      transition: color 0.3s ease;
     }
 
     .meta-item {
@@ -80,20 +145,26 @@
 
     .social-links a {
       font-size: 1.2rem;
-      color: #1bbeff;
-      transition: color 0.2s;
+      color: var(--accent-2);
+      transition: color 0.2s ease;
     }
 
     .social-links a:hover {
-      color: #ff00d4;
+      color: var(--accent-4);
       border-bottom: none;
+    }
+
+    .social-links a svg {
+      stroke: currentColor;
+      transition: stroke 0.3s ease;
     }
 
     hr {
       border: none;
-      border-top: 1px solid #56ff08;
+      border-top: 2px solid var(--border-color);
       margin: 40px 0;
       width: 1000px;
+      transition: border-color 0.3s ease;
     }
 
     section {
@@ -105,6 +176,8 @@
       font-style: italic;
       font-size: 1.8rem;
       margin-bottom: 25px;
+      color: var(--text-primary);
+      transition: color 0.3s ease;
     }
 
     .item {
@@ -116,10 +189,11 @@
       width: 180px;
       flex-shrink: 0;
       font-size: 0.9rem;
-      color: #00ccff;
+      color: var(--accent-4);
       text-transform: uppercase;
       padding-top: 6px;
       letter-spacing: 1px;
+      transition: color 0.3s ease;
     }
 
     .item-content {
@@ -131,24 +205,29 @@
       font-size: 1rem;
       margin-bottom: 4px;
       display: block;
+      color: var(--accent-1);
+      transition: color 0.3s ease;
     }
 
     .item-date {
-      color: #ffffff;
+      color: var(--text-primary);
+      transition: color 0.3s ease;
     }
 
     .item-desc {
       font-size: 0.9rem;
-      color: #415dff;
+      color: var(--text-tertiary);
       line-height: 1.4;
+      transition: color 0.3s ease;
     }
 
     #about p {
       font-size: 1rem;
-      color: #df10ff;
+      color: var(--text-tertiary);
+      transition: color 0.3s ease;
     }
 
-    /* Skills Section Styles */
+    
     #skills {
       margin-bottom: 60px;
     }
@@ -171,9 +250,9 @@
       display: inline-block;
       padding: 10px 18px;
       background: rgba(255, 255, 255, 0.1);
-      border: 2px solid #ff00f7;
+      border: 2px solid var(--accent-1);
       border-radius: 25px;
-      color: #ffffff;
+      color: var(--text-primary);
       font-family: 'Fira Code', monospace;
       font-size: 0.9rem;
       font-weight: 600;
@@ -185,8 +264,8 @@
     }
 
     .skill-btn:hover {
-      background: rgba(0, 225, 255, 0.33);
-      border-color: #ffae0d;
+      background: rgba(27, 190, 255, 0.33);
+      border-color: var(--accent-3);
       box-shadow: 0 0 15px rgba(255, 0, 191, 0.5);
       transform: translateY(-2px);
     }
@@ -215,7 +294,7 @@
       }
     }
 
-    /* GSAP Animation Styles */
+    
     .fade-in {
       opacity: 0;
     }
@@ -256,7 +335,7 @@
       }
     }
   </style>
-  <!-- GSAP Library -->
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
@@ -265,6 +344,7 @@
 
   <header>
     <h1>Isha Nayal</h1>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">🌙</button>
 
     <div class="meta">
       <div class="meta-item">
@@ -429,7 +509,7 @@
         <span class="skill-btn">Joblib</span>
         <span class="skill-btn">DVC</span>
         <span class="skill-btn">RAG</span>
-        <!-- Duplicate for seamless loop -->
+        
         <span class="skill-btn">Python</span>
         <span class="skill-btn">SQL</span>
         <span class="skill-btn">R</span>
@@ -466,13 +546,52 @@
 
 </body>
 
-<!-- GSAP Animations -->
+
 <script>
+  
+  function initializeTheme() {
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    
+    const savedTheme = localStorage.getItem('theme-preference');
+    let currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+
+    
+    applyTheme(currentTheme);
+
+    
+    themeToggle.addEventListener('click', () => {
+      currentTheme = document.body.classList.contains('light-mode') ? 'dark' : 'light';
+      applyTheme(currentTheme);
+      localStorage.setItem('theme-preference', currentTheme);
+    });
+  }
+
+  function applyTheme(theme) {
+    const themeToggle = document.getElementById('themeToggle');
+
+    if (theme === 'light') {
+      document.body.classList.add('light-mode');
+      themeToggle.textContent = '☀︎';
+    } else {
+      document.body.classList.remove('light-mode');
+      themeToggle.textContent = '⏾';
+    }
+  }
+
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeTheme);
+  } else {
+    initializeTheme();
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
-    // Register ScrollTrigger plugin
+    
     gsap.registerPlugin(ScrollTrigger);
 
-    // 1. HEADER ANIMATIONS - Entrance sequence
+    
     gsap.to('header h1', {
       duration: 1.2,
       delay: 0.2,
@@ -498,7 +617,7 @@
       stagger: 0.05,
     });
 
-    // 2. SECTION ENTRANCE ANIMATIONS with ScrollTrigger
+    
     gsap.utils.toArray('section').forEach((section, index) => {
       gsap.fromTo(section,
         {
@@ -520,7 +639,7 @@
       );
     });
 
-    // 3. ITEM STAGGER ANIMATIONS
+    
     gsap.utils.toArray('.item').forEach((item, index) => {
       gsap.fromTo(item,
         {
@@ -542,7 +661,7 @@
       );
     });
 
-    // 4. SECTION TITLES ANIMATION
+    
     gsap.utils.toArray('section h2').forEach((title) => {
       gsap.fromTo(title,
         {
@@ -563,7 +682,7 @@
       );
     });
 
-    // 5. INTERACTIVE LINK ANIMATIONS
+    
     const links = document.querySelectorAll('.item-title, a');
     links.forEach((link) => {
       link.addEventListener('mouseenter', function () {
@@ -583,34 +702,36 @@
       });
     });
 
-    // 5.5 SKILLS BUTTONS - CONTINUOUS HORIZONTAL SCROLL ANIMATION
+  
     const skillsWrapper = document.querySelector('.skills-wrapper');
 
     if (skillsWrapper) {
-      // Get the width of first 15 items (one full set)
+      
       const skillBtns = document.querySelectorAll('.skill-btn');
       const firstSetWidth = Array.from(skillBtns).slice(0, 15).reduce((sum, btn) => {
-        return sum + btn.offsetWidth + 15; // 15 is the gap
+        return sum + btn.offsetWidth + 15; 
       }, 0);
 
-      // Continuous horizontal animation - scrolls from right to left
+      
       gsap.to('.skills-wrapper', {
         x: -firstSetWidth,
         duration: 25,
         ease: 'none',
         repeat: -1,
         modifiers: {
-          x: gsap.utils.unitize(x => parseFloat(x) % firstSetWidth) // Seamless loop
+          x: gsap.utils.unitize(x => parseFloat(x) % firstSetWidth) 
         }
       });
 
-      // Interactive hover effect on individual buttons
+      
       document.querySelectorAll('.skill-btn').forEach((btn) => {
         btn.addEventListener('mouseenter', function () {
+          const isDarkMode = !document.body.classList.contains('light-mode');
+          const shadowColor = isDarkMode ? 'rgba(255, 0, 191, 0.8)' : 'rgba(102, 0, 204, 0.5)';
           gsap.to(this, {
             duration: 0.3,
             scale: 1.15,
-            boxShadow: '0 0 20px rgba(255, 0, 191, 0.8)',
+            boxShadow: `0 0 20px ${shadowColor}`,
             ease: 'back.out(1.5)',
           });
         });
@@ -625,7 +746,7 @@
         });
       });
 
-      // Pause animation on hover
+      
       const skillsContainer = document.querySelector('.skills-container');
       skillsContainer.addEventListener('mouseenter', function () {
         gsap.to('.skills-wrapper', {
@@ -640,11 +761,10 @@
       });
     }
 
-    // 6. HR ANIMATION (horizontal rule) - Enhanced with glow and pulse
+    
     const hrElement = document.querySelector('hr');
 
-    // Initial scale-in animation
-    gsap.fromTo('hr',
+    
       {
         opacity: 0,
         scaleX: 0,
@@ -659,9 +779,12 @@
       }
     );
 
-    // Glow pulse animation on the hr element
+    
     gsap.to('hr', {
-      boxShadow: '0 0 20px #56ff08, 0 0 40px #56ff08',
+      boxShadow: () => {
+        const isDarkMode = !document.body.classList.contains('light-mode');
+        return isDarkMode ? '0 0 20px #56ff08, 0 0 40px #56ff08' : '0 0 20px #0099ff, 0 0 40px #0099ff';
+      },
       duration: 2,
       delay: 2,
       repeat: -1,
@@ -669,7 +792,7 @@
       ease: 'sine.inOut',
     });
 
-    // Subtle width oscillation
+    
     gsap.to('hr', {
       width: '1020px',
       duration: 3,
@@ -679,7 +802,7 @@
       ease: 'sine.inOut',
     });
 
-    // 7. MOUSE PARALLAX EFFECT ON HOVER
+    
     document.addEventListener('mousemove', (e) => {
       const mouseX = (e.clientX / window.innerWidth) * 20 - 10;
       const mouseY = (e.clientY / window.innerHeight) * 20 - 10;
@@ -694,7 +817,7 @@
   });
 </script>
 
-<!-- Other Script Files -->
+
 <script src="script.js"></script>
 
 </html>
