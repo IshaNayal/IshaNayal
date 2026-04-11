@@ -39,7 +39,7 @@
       --border-color: #0099ff;
     }
 
-    
+  
     * {
       margin: 0;
       padding: 0;
@@ -116,7 +116,7 @@
     }
 
     .meta {
-      font-size: 0.85rem;
+      font-size: 1.1rem;
       color: var(--text-secondary);
       margin-bottom: 20px;
       transition: color 0.3s ease;
@@ -334,6 +334,23 @@
         transform: translateY(-3px);
       }
     }
+
+
+    #nameTitle {
+      min-height: 3.6rem;
+      opacity: 0;
+    }
+
+    .typewriter-text {
+      border-right: 3px solid var(--text-primary);
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
   </style>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -343,16 +360,16 @@
 <body>
 
   <header>
-    <h1>Isha Nayal</h1>
+    <h1 id="nameTitle">𝒾𝓈𝒽𝒶 𝓃𝒶𝓎𝒶𝓁</h1>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">🌙</button>
 
     <div class="meta">
       <div class="meta-item">
       </div>
       <div class="meta-item">
-        <span class="meta-separator">ai</span>
+        <span class="meta-separator">𝒂𝒊</span>
         <span class="meta-separator">·</span>
-        <span>ml · dl · research</span>
+        <span>𝒎𝒍 · 𝒅𝒍 · 𝒓𝒆𝒔𝒆𝒂𝒓𝒄𝒉</span>
       </div>
     </div>
 
@@ -391,9 +408,10 @@
 
   <section id="about">
     <h2>about</h2>
-    <p>19. Just a girl cuirous about tech - building things, debugging both code and life, and figuring out how stuff
-      actually works behind the scenes.<br> i enjoy exploring different domains, experimenting with ideas, and learning
-      by doing. </p>
+    <p>𝟏𝟗. 𝑱𝒖𝒔𝒕 𝒂 𝒈𝒊𝒓𝒍 𝒄𝒖𝒓𝒊𝒐𝒖𝒔 𝒂𝒃𝒐𝒖𝒕 𝒕𝒆𝒄𝒉 - 𝒃𝒖𝒊𝒍𝒅𝒊𝒏𝒈 𝒕𝒉𝒊𝒏𝒈𝒔, 𝒅𝒆𝒃𝒖𝒈𝒈𝒊𝒏𝒈
+      𝒃𝒐𝒕𝒉 𝒄𝒐𝒅𝒆 𝒂𝒏𝒅 𝒍𝒊𝒇𝒆, 𝒂𝒏𝒅 𝒇𝒊𝒈𝒖𝒓𝒊𝒏𝒈 𝒐𝒖𝒕 𝒉𝒐𝒘 𝒔𝒕𝒖𝒇𝒇 𝒂𝒄𝒕𝒖𝒂𝒍𝒍𝒚 𝒘𝒐𝒓𝒌𝒔
+      𝒃𝒆𝒉𝒊𝒏𝒅 𝒕𝒉𝒆 𝒔𝒄𝒆𝒏𝒆𝒔.<br> 𝒊 𝒆𝒏𝒋𝒐𝒚 𝒆𝒙𝒑𝒍𝒐𝒓𝒊𝒏𝒈 𝒅𝒊𝒇𝒇𝒆𝒓𝒆𝒏𝒕 𝒅𝒐𝒎𝒂𝒊𝒏𝒔,
+      𝒆𝒙𝒑𝒆𝒓𝒊𝒎𝒆𝒏𝒕𝒊𝒏𝒈 𝒘𝒊𝒕𝒉 𝒊𝒅𝒆𝒂𝒔, 𝒂𝒏𝒅 𝒍𝒆𝒂𝒓𝒏𝒊𝒏𝒈 𝒃𝒚 𝒅𝒐𝒊𝒏𝒈. </p>
   </section>
 
   <section id="projects">
@@ -428,20 +446,22 @@
     <h2>experience</h2>
 
     <div class="item">
-      <div class="item-tags">AI Research Intern(remote)</div>
+      <div class="item-tags">𝑨𝑰 𝑹𝒆𝒔𝒆𝒂𝒓𝒄𝒉 𝑰𝒏𝒕𝒆𝒓𝒏(𝒓𝒆𝒎𝒐𝒕𝒆)</div>
       <div class="item-content">
-        <a href="#" class="item-title">NIT Kurukshetra<br><span class="item-date">Apr-Jul(2026)</span></a>
-        <p class="item-desc">working on Twin based system</p>
+        <a href="#" class="item-title">𝑵𝑰𝑻 𝑲𝒖𝒓𝒖𝒌𝒔𝒉𝒆𝒕𝒓𝒂<br><span
+            class="item-date">𝑨𝒑𝒓-𝑱𝒖𝒍(𝟐𝟎𝟐𝟔)</span></a>
+        <p class="item-desc">𝒘𝒐𝒓𝒌𝒊𝒏𝒈 𝒐𝒏 𝑻𝒘𝒊𝒏 𝒃𝒂𝒔𝒆𝒅 𝒔𝒚𝒔𝒕𝒆𝒎</p>
       </div>
     </div>
 
     <div class="item">
-      <div class="item-tags">AI Research Intern(remote)</div>
+      <div class="item-tags">𝑨𝑰 𝑹𝒆𝒔𝒆𝒂𝒓𝒄𝒉 𝑰𝒏𝒕𝒆𝒓𝒏(𝒓𝒆𝒎𝒐𝒕𝒆)</div>
       <div class="item-content">
-        <a href="#" class="item-title">S.P.Jain Institute of Management of Research<br><span
-            class="item-date">Jan-Mar(2026)</span></a>
-        <p class="item-desc">fine tuned an llm to rewrite sponsered posts into organic-style influencer content. work
-          got accepted for presentation at CERE 2026,IIM Indore</p>
+        <a href="#" class="item-title">𝑺.𝑷.𝑱𝒂𝒊𝒏 𝑰𝒏𝒔𝒕𝒊𝒕𝒖𝒕𝒆 𝒐𝒇 𝑴𝒂𝒏𝒂𝒈𝒆𝒎𝒆𝒏𝒕 𝒐𝒇
+          𝑹𝒆𝒔𝒆𝒂𝒓𝒄𝒉<br><span class="item-date">Jan-Mar(2026)</span></a>
+        <p class="item-desc">𝒇𝒊𝒏𝒆 𝒕𝒖𝒏𝒆𝒅 𝒂𝒏 𝒍𝒍𝒎 𝒕𝒐 𝒓𝒆𝒘𝒓𝒊𝒕𝒆 𝒔𝒑𝒐𝒏𝒔𝒆𝒓𝒆𝒅 𝒑𝒐𝒔𝒕𝒔 𝒊𝒏𝒕𝒐
+          𝒐𝒓𝒈𝒂𝒏𝒊𝒄-𝒔𝒕𝒚𝒍𝒆 𝒊𝒏𝒇𝒍𝒖𝒆𝒏𝒄𝒆𝒓 𝒄𝒐𝒏𝒕𝒆𝒏𝒕. 𝒘𝒐𝒓𝒌 𝒈𝒐𝒕 𝒂𝒄𝒄𝒆𝒑𝒕𝒆𝒅 𝒇𝒐𝒓
+          𝒑𝒓𝒆𝒔𝒆𝒏𝒕𝒂𝒕𝒊𝒐𝒏 𝒂𝒕 𝑪𝑬𝑹𝑬 𝟐𝟎𝟐𝟔,𝑰𝑰𝑴 𝑰𝒏𝒅𝒐𝒓𝒆</p>
       </div>
     </div>
   </section>
@@ -509,7 +529,7 @@
         <span class="skill-btn">Joblib</span>
         <span class="skill-btn">DVC</span>
         <span class="skill-btn">RAG</span>
-        
+
         <span class="skill-btn">Python</span>
         <span class="skill-btn">SQL</span>
         <span class="skill-btn">R</span>
@@ -548,7 +568,7 @@
 
 
 <script>
-  
+
   function initializeTheme() {
     const themeToggle = document.getElementById('themeToggle');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -580,7 +600,7 @@
     }
   }
 
-  
+ 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeTheme);
   } else {
@@ -591,18 +611,40 @@
     
     gsap.registerPlugin(ScrollTrigger);
 
-    
-    gsap.to('header h1', {
-      duration: 1.2,
-      delay: 0.2,
+ 
+    const nameElement = document.getElementById('nameTitle');
+    const fullName = '𝒾𝓈𝒽𝒶 𝓃𝒶𝓎𝒶𝓁';
+    let displayedText = '';
+    let charIndex = 0;
+
+    // Start with fade-in
+    gsap.to('#nameTitle', {
       opacity: 1,
-      y: 0,
-      ease: 'power3.out',
+      duration: 0.4,
+      ease: 'power2.out',
     });
+
+   
+    function typeWriter() {
+      if (charIndex < fullName.length) {
+        displayedText += fullName[charIndex];
+        nameElement.textContent = displayedText;
+        charIndex++;
+        setTimeout(typeWriter, 40); 
+      } else {
+        
+        nameElement.classList.remove('typewriter-text');
+      }
+    }
+
+    
+    nameElement.classList.add('typewriter-text');
+    setTimeout(typeWriter, 500); 
+    
 
     gsap.to('.meta', {
       duration: 1,
-      delay: 0.4,
+      delay: (fullName.length * 0.04) + 0.7, 
       opacity: 1,
       y: 0,
       ease: 'power2.out',
@@ -610,7 +652,7 @@
 
     gsap.to('.social-links a', {
       duration: 0.8,
-      delay: (index) => 0.6 + index * 0.1,
+      delay: (index) => (fullName.length * 0.04) + 0.8 + index * 0.1,
       opacity: 1,
       y: 0,
       ease: 'back.out(1.7)',
@@ -661,7 +703,7 @@
       );
     });
 
-    
+  
     gsap.utils.toArray('section h2').forEach((title) => {
       gsap.fromTo(title,
         {
@@ -702,14 +744,14 @@
       });
     });
 
-  
+    
     const skillsWrapper = document.querySelector('.skills-wrapper');
 
     if (skillsWrapper) {
-      
+     
       const skillBtns = document.querySelectorAll('.skill-btn');
       const firstSetWidth = Array.from(skillBtns).slice(0, 15).reduce((sum, btn) => {
-        return sum + btn.offsetWidth + 15; 
+        return sum + btn.offsetWidth + 15;
       }, 0);
 
       
@@ -764,7 +806,8 @@
     
     const hrElement = document.querySelector('hr');
 
-    
+   
+    gsap.fromTo('hr',
       {
         opacity: 0,
         scaleX: 0,
@@ -817,7 +860,7 @@
   });
 </script>
 
-
+<!-- Other Script Files -->
 <script src="script.js"></script>
 
 </html>
