@@ -113,9 +113,9 @@
     }
 
     .item-tags {
-      width: 120px;
+      width: 180px;
       flex-shrink: 0;
-      font-size: 0.9 rem;
+      font-size: 0.9rem;
       color: #00ccff;
       text-transform: uppercase;
       padding-top: 6px;
@@ -131,6 +131,10 @@
       font-size: 1rem;
       margin-bottom: 4px;
       display: block;
+    }
+
+    .item-date {
+      color: #ffffff;
     }
 
     .item-desc {
@@ -225,6 +229,32 @@
       opacity: 0;
       transform: translateY(10px);
     }
+
+
+
+    @keyframes runAcross {
+      0% {
+        left: -50px;
+        transform: scaleX(1);
+      }
+
+      100% {
+        left: calc(100% + 50px);
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes catRun {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-3px);
+      }
+    }
   </style>
   <!-- GSAP Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -273,7 +303,10 @@
       </a>
     </div>
 
-    <hr>
+    <div style="position: relative; height: 1px; margin: 40px 0;">
+      <hr>
+      <div class="running-cat"></div>
+    </div>
   </header>
 
   <section id="about">
@@ -312,21 +345,23 @@
   </section>
 
   <section id="paper-builds">
-    <h2>Experience</h2>
+    <h2>experience</h2>
 
     <div class="item">
-      <div class="item-tags">CV · RESNET</div>
+      <div class="item-tags">AI Research Intern(remote)</div>
       <div class="item-content">
-        <a href="#" class="item-title">ResNet18 transfer learning on CIFAR-10</a>
-        <p class="item-desc">fine-tuned resnet18 on cifar-10 using imagenet weights after reading the resnet paper.</p>
+        <a href="#" class="item-title">NIT Kurukshetra<br><span class="item-date">Apr-Jul(2026)</span></a>
+        <p class="item-desc">working on Twin based system</p>
       </div>
     </div>
 
     <div class="item">
-      <div class="item-tags">CV · YOLO</div>
+      <div class="item-tags">AI Research Intern(remote)</div>
       <div class="item-content">
-        <a href="#" class="item-title">anzen 安全 — real-time hazard detection (YOLOv8)</a>
-        <p class="item-desc">applied yolov8 to road safety after working through the original yolo paper.</p>
+        <a href="#" class="item-title">S.P.Jain Institute of Management of Research<br><span
+            class="item-date">Jan-Mar(2026)</span></a>
+        <p class="item-desc">fine tuned an llm to rewrite sponsered posts into organic-style influencer content. work
+          got accepted for presentation at CERE 2026,IIM Indore</p>
       </div>
     </div>
   </section>
@@ -395,7 +430,7 @@
         <span class="skill-btn">DVC</span>
         <span class="skill-btn">RAG</span>
         <!-- Duplicate for seamless loop -->
-       <span class="skill-btn">Python</span>
+        <span class="skill-btn">Python</span>
         <span class="skill-btn">SQL</span>
         <span class="skill-btn">R</span>
         <span class="skill-btn">Redis</span>
