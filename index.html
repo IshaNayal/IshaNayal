@@ -39,7 +39,7 @@
       --border-color: #0099ff;
     }
 
-  
+   
     * {
       margin: 0;
       padding: 0;
@@ -120,6 +120,16 @@
       color: var(--text-secondary);
       margin-bottom: 20px;
       transition: color 0.3s ease;
+    }
+
+    .meta a {
+      color: var(--text-secondary);
+      border-bottom: 1px solid transparent;
+      transition: border-bottom 0.2s, color 0.3s ease;
+    }
+
+    .meta a:hover {
+      border-bottom: 1px solid var(--text-secondary);
     }
 
     .meta-item {
@@ -335,7 +345,7 @@
       }
     }
 
-
+    
     #nameTitle {
       min-height: 3.6rem;
       opacity: 0;
@@ -352,7 +362,7 @@
       }
     }
   </style>
-  
+  <!-- GSAP Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
@@ -369,7 +379,7 @@
       <div class="meta-item">
         <span class="meta-separator">𝒂𝒊</span>
         <span class="meta-separator">·</span>
-        <span>𝒎𝒍 · 𝒅𝒍 · 𝒓𝒆𝒔𝒆𝒂𝒓𝒄𝒉</span>
+        <span>𝒎𝒍 · 𝒅𝒍 · <a href="CV.pdf" target="_blank">𝒓𝒆𝒔𝒆𝒂𝒓𝒄𝒉</a></span>
       </div>
     </div>
 
@@ -398,6 +408,7 @@
           <polyline points="22,6 12,13 2,6"></polyline>
         </svg>
       </a>
+      <a href="CV.pdf" target="_blank">CV</a>
     </div>
 
     <div style="position: relative; height: 1px; margin: 40px 0;">
@@ -467,32 +478,66 @@
   </section>
 
   <section id="paper-implementations">
-    <h2>paper implementations</h2>
+    <h2>paper implementations & code</h2>
 
     <div class="item">
-      <div class="item-tags">CV · CNN</div>
+      <div class="item-tags"></div>
       <div class="item-content">
-        <a href="#" class="item-title">AlexNet — Krizhevsky et al., 2012</a>
-        <p class="item-desc">from-scratch pytorch implementation of the architecture that started the deep learning era.
+        <a href="#" class="item-title">Attention Is All You Need</a>
+        <p class="item-desc">Reproduced the Transformer model from scratch using multi-head self-attention and positional encoding, enabling parallel sequence processing and capturing long-range dependencies without recurrence.
         </p>
       </div>
     </div>
 
     <div class="item">
-      <div class="item-tags">CV · RESNET</div>
+      <div class="item-tags"></div>
       <div class="item-content">
-        <a href="#" class="item-title">ResNet — He et al., 2015</a>
-        <p class="item-desc">implemented residual connections from scratch; trained on standard benchmarks.</p>
+        <a href="#" class="item-title">BERT </a>
+        <p class="item-desc">Reproduced BERT and explored bidirectional contextual embeddings, analyzing how masked language modeling enables deep semantic and syntactic understanding of text.</p>
       </div>
     </div>
 
     <div class="item">
-      <div class="item-tags">CV · DETECTION</div>
+      <div class="item-tags"></div>
       <div class="item-content">
-        <a href="#" class="item-title">YOLOv1 — Redmon et al., 2015</a>
+        <a href="#" class="item-title">Visual BERT</a>
+        <p class="item-desc">Implemented VisualBERT from scratch, a multimodal Transformer that aligns text and image regions via self-attention, enabling tasks like visual grounding, reasoning, and image-text matching.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-tags"></div>
+      <div class="item-content">
+        <a href="#" class="item-title">ALBERT</a>
         <p class="item-desc">full from-scratch implementation of single-shot object detection in pytorch.</p>
       </div>
     </div>
+
+    <div class="item">
+      <div class="item-tags"></div>
+      <div class="item-content">
+        <a href="#" class="item-title">Distil BERT</a>
+        <p class="item-desc">full from-scratch implementation of single-shot object detection in pytorch.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-tags"></div>
+      <div class="item-content">
+        <a href="#" class="item-title">GPT</a>
+        <p class="item-desc">full from-scratch implementation of single-shot object detection in pytorch.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-tags"></div>
+      <div class="item-content">
+        <a href="#" class="item-title">RoBERTa</a>
+        <p class="item-desc">full from-scratch implementation of single-shot object detection in pytorch.</p>
+      </div>
+    </div>
+
+
   </section>
 
   <section id="skills">
@@ -529,7 +574,7 @@
         <span class="skill-btn">Joblib</span>
         <span class="skill-btn">DVC</span>
         <span class="skill-btn">RAG</span>
-
+       
         <span class="skill-btn">Python</span>
         <span class="skill-btn">SQL</span>
         <span class="skill-btn">R</span>
@@ -568,7 +613,7 @@
 
 
 <script>
-
+  
   function initializeTheme() {
     const themeToggle = document.getElementById('themeToggle');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -600,7 +645,7 @@
     }
   }
 
- 
+  
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeTheme);
   } else {
@@ -608,23 +653,23 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    
+    n
     gsap.registerPlugin(ScrollTrigger);
 
- 
+    
     const nameElement = document.getElementById('nameTitle');
     const fullName = '𝒾𝓈𝒽𝒶 𝓃𝒶𝓎𝒶𝓁';
     let displayedText = '';
     let charIndex = 0;
 
-    // Start with fade-in
+    
     gsap.to('#nameTitle', {
       opacity: 1,
       duration: 0.4,
       ease: 'power2.out',
     });
 
-   
+    
     function typeWriter() {
       if (charIndex < fullName.length) {
         displayedText += fullName[charIndex];
@@ -640,11 +685,12 @@
     
     nameElement.classList.add('typewriter-text');
     setTimeout(typeWriter, 500); 
+
     
 
     gsap.to('.meta', {
       duration: 1,
-      delay: (fullName.length * 0.04) + 0.7, 
+      delay: (fullName.length * 0.04) + 0.7,
       opacity: 1,
       y: 0,
       ease: 'power2.out',
@@ -703,7 +749,7 @@
       );
     });
 
-  
+    
     gsap.utils.toArray('section h2').forEach((title) => {
       gsap.fromTo(title,
         {
@@ -748,13 +794,13 @@
     const skillsWrapper = document.querySelector('.skills-wrapper');
 
     if (skillsWrapper) {
-     
+      
       const skillBtns = document.querySelectorAll('.skill-btn');
       const firstSetWidth = Array.from(skillBtns).slice(0, 15).reduce((sum, btn) => {
-        return sum + btn.offsetWidth + 15;
+        return sum + btn.offsetWidth + 15; 
       }, 0);
 
-      
+     
       gsap.to('.skills-wrapper', {
         x: -firstSetWidth,
         duration: 25,
@@ -806,7 +852,7 @@
     
     const hrElement = document.querySelector('hr');
 
-   
+    
     gsap.fromTo('hr',
       {
         opacity: 0,
@@ -860,7 +906,7 @@
   });
 </script>
 
-<!-- Other Script Files -->
+
 <script src="script.js"></script>
 
 </html>
