@@ -13,7 +13,7 @@
   <style>
     
     :root {
-      
+    
       --bg-primary: #000000;
       --bg-secondary: #1a1a2e;
       --text-primary: #ff00bf;
@@ -23,23 +23,23 @@
       --accent-2: #1bbeff;
       --accent-3: #56ff08;
       --accent-4: #00d4ff;
-      --border-color: #56ff08;
+      --border-color: #05fff7;
     }
 
     body.light-mode {
-      --bg-primary: #ffffff;
+      --bg-primary: #93e4ff;
       --bg-secondary: #f5f5f5;
       --text-primary: #1a1a2e;
       --text-secondary: #333333;
       --text-tertiary: #0066ff;
       --accent-1: #6600cc;
       --accent-2: #0099ff;
-      --accent-3: #00b300;
+      --accent-3: #ffffff;
       --accent-4: #0099ff;
-      --border-color: #0099ff;
+      --border-color: #fbff00;
     }
 
-   
+ 
     * {
       margin: 0;
       padding: 0;
@@ -173,7 +173,7 @@
       border: none;
       border-top: 2px solid var(--border-color);
       margin: 40px 0;
-      width: 1000px;
+      width: 800px;
       transition: border-color 0.3s ease;
     }
 
@@ -237,7 +237,7 @@
       transition: color 0.3s ease;
     }
 
-    
+   
     #skills {
       margin-bottom: 60px;
     }
@@ -280,6 +280,116 @@
       transform: translateY(-2px);
     }
 
+   
+    .papers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 60px;
+      perspective: 1000px;
+    }
+
+    .paper-item {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      cursor: pointer;
+      perspective: 1000px;
+    }
+
+    .paper-item-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      transform-style: preserve-3d;
+    }
+
+    .paper-item.flipped .paper-item-inner {
+      transform: rotateY(180deg);
+    }
+
+    .paper-item-front,
+    .paper-item-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      justify-content: flex-start;
+    }
+
+    .paper-item-back {
+      transform: rotateY(180deg);
+      background: rgba(255, 0, 191, 0.1);
+      border-color: var(--accent-1);
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .paper-item-back-content {
+      color: #1bbeff;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .paper-item:hover .paper-item-front,
+    .paper-item:hover {
+      box-shadow: 0 0 20px rgba(86, 255, 8, 0.3);
+    }
+
+    .paper-item-front {
+      justify-content: space-between;
+    }
+
+    .paper-item .item-tags {
+      width: auto;
+      margin-bottom: 8px;
+      padding-top: 0;
+    }
+
+    .paper-item .item-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .paper-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-tertiary);
+      font-size: 0.9rem;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.2s ease;
+      width: fit-content;
+      margin-top: auto;
+    }
+
+    .paper-link:hover {
+      border-bottom: 1px solid var(--accent-2);
+      color: var(--accent-4);
+    }
+
+    .paper-link svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+    }
+
+    @media (max-width: 1024px) {
+      .papers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 40px 20px;
@@ -301,6 +411,10 @@
       .skill-btn {
         padding: 8px 14px;
         font-size: 0.8rem;
+      }
+
+      .papers-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -361,13 +475,75 @@
         border-color: transparent;
       }
     }
+
+    
+    .glitter-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 9999;
+    }
+
+    body.light-mode .glitter-container {
+      display: none;
+    }
+
+    .glitter {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: rgb(255, 239, 8);
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ffffff, 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0.6;
+        transform: scale(0.6);
+      }
+
+      50% {
+        opacity: 0;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes float-up {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+      }
+
+      50% {
+        transform: translateY(-100vh) translateX(var(--tx, 0px));
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(0) translateX(var(--tx, 0px));
+        opacity: 0;
+      }
+    }
+
+    .glitter.animate {
+      animation: twinkle var(--duration, 2s) ease-in-out infinite, float-up var(--float-duration, 8s) linear forwards;
+    }
   </style>
-  <!-- GSAP Library -->
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
 <body>
+  
+  <div class="glitter-container" id="glitterContainer"></div>
 
   <header>
     <h1 id="nameTitle">𝒾𝓈𝒽𝒶 𝓃𝒶𝓎𝒶𝓁</h1>
@@ -419,45 +595,52 @@
 
   <section id="about">
     <h2>about</h2>
-    <p>𝟏𝟗. 𝑱𝒖𝒔𝒕 𝒂 𝒈𝒊𝒓𝒍 𝒄𝒖𝒓𝒊𝒐𝒖𝒔 𝒂𝒃𝒐𝒖𝒕 𝒕𝒆𝒄𝒉 - 𝒃𝒖𝒊𝒍𝒅𝒊𝒏𝒈 𝒕𝒉𝒊𝒏𝒈𝒔, 𝒅𝒆𝒃𝒖𝒈𝒈𝒊𝒏𝒈
-      𝒃𝒐𝒕𝒉 𝒄𝒐𝒅𝒆 𝒂𝒏𝒅 𝒍𝒊𝒇𝒆, 𝒂𝒏𝒅 𝒇𝒊𝒈𝒖𝒓𝒊𝒏𝒈 𝒐𝒖𝒕 𝒉𝒐𝒘 𝒔𝒕𝒖𝒇𝒇 𝒂𝒄𝒕𝒖𝒂𝒍𝒍𝒚 𝒘𝒐𝒓𝒌𝒔
-      𝒃𝒆𝒉𝒊𝒏𝒅 𝒕𝒉𝒆 𝒔𝒄𝒆𝒏𝒆𝒔.<br> 𝒊 𝒆𝒏𝒋𝒐𝒚 𝒆𝒙𝒑𝒍𝒐𝒓𝒊𝒏𝒈 𝒅𝒊𝒇𝒇𝒆𝒓𝒆𝒏𝒕 𝒅𝒐𝒎𝒂𝒊𝒏𝒔,
-      𝒆𝒙𝒑𝒆𝒓𝒊𝒎𝒆𝒏𝒕𝒊𝒏𝒈 𝒘𝒊𝒕𝒉 𝒊𝒅𝒆𝒂𝒔, 𝒂𝒏𝒅 𝒍𝒆𝒂𝒓𝒏𝒊𝒏𝒈 𝒃𝒚 𝒅𝒐𝒊𝒏𝒈. </p>
+    <p> I’m someone who believes life is about growing, exploring, and not being afraid to try things that feel a little scary. <br>
+
+I like building things, learning from mistakes, and figuring stuff out along the way.<br> For me, it’s not just about reaching goals, it’s about who I become while chasing them. <br>
+Fueled by curiosity, I’m always exploring, learning, and figuring things out as I go.
+
+ </p> </p>
   </section>
 
   <section id="projects">
     <h2>projects</h2>
 
     <div class="item">
-      <div class="item-tags">AUTOML</div>
+      <div class="item-tags"></div>
       <div class="item-content">
-        <a href="#" class="item-title">Sharpner — no-code AutoML platform</a>
-        <p class="item-desc">build, train, and compare ml models through a ui. no code required.</p>
+        <a href="#" class="item-title"> Multi-Agent AI Research System with LangChain</a>
+        <p class="item-desc">A sophisticated multi-agent AI system that collaborates to conduct in-depth research on any topic. Four specialized AI agents work together to search, scrape, analyze, and critique information to produce polished research reports.</p>
       </div>
     </div>
 
     <div class="item">
-      <div class="item-tags">AGENTS</div>
+      <div class="item-tags"></div>
       <div class="item-content">
-        <a href="#" class="item-title">kenkyū — autonomous AI research agent</a>
-        <p class="item-desc">plans queries, searches the web, and synthesizes reports using langgraph + ollama.</p>
+        <a href="#" class="item-title">Shakespeare GPT Tokenizer</a>
+        <p class="item-desc">A Byte Pair Encoding (BPE) tokenizer trained on Shakespeare's complete works, designed for building GPT models on classical literature.</p>
       </div>
     </div>
 
-    <div class="item">
-      <div class="item-tags">CV · YOLO</div>
-      <div class="item-content">
-        <a href="#" class="item-title">anzen 安全 — real-time hazard detection</a>
-        <p class="item-desc">detects vehicles, pedestrians, and road hazards with severity-based alerts via yolov8.</p>
-      </div>
-    </div>
+    
   </section>
 
   <section id="paper-builds">
     <h2>experience</h2>
 
+
+
     <div class="item">
-      <div class="item-tags">𝑨𝑰 𝑹𝒆𝒔𝒆𝒂𝒓𝒄𝒉 𝑰𝒏𝒕𝒆𝒓𝒏(𝒓𝒆𝒎𝒐𝒕𝒆)</div>
+      <div class="item-tags">𝑨𝑰  𝑰𝒏𝒕𝒆𝒓𝒏 <br>(𝒓𝒆𝒎𝒐𝒕𝒆)</div>
+      <div class="item-content">
+        <a href="#" class="item-title">CareVity AI (incubated @ IIT Bhubaneswar)<br><span
+            class="item-date">𝑨𝒑𝒓-𝑱𝒖𝒍(𝟐𝟎𝟐𝟔)</span></a>
+        <p class="item-desc"> working on model training</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-tags">𝑨𝑰 𝑹𝒆𝒔𝒆𝒂𝒓𝒄𝒉 𝑰𝒏𝒕𝒆𝒓𝒏 (𝒓𝒆𝒎𝒐𝒕𝒆)</div>
       <div class="item-content">
         <a href="#" class="item-title">𝑵𝑰𝑻 𝑲𝒖𝒓𝒖𝒌𝒔𝒉𝒆𝒕𝒓𝒂<br><span
             class="item-date">𝑨𝒑𝒓-𝑱𝒖𝒍(𝟐𝟎𝟐𝟔)</span></a>
@@ -466,7 +649,7 @@
     </div>
 
     <div class="item">
-      <div class="item-tags">𝑨𝑰 𝑹𝒆𝒔𝒆𝒂𝒓𝒄𝒉 𝑰𝒏𝒕𝒆𝒓𝒏(𝒓𝒆𝒎𝒐𝒕𝒆)</div>
+      <div class="item-tags">𝑨𝑰 𝑹𝒆𝒔𝒆𝒂𝒓𝒄𝒉 𝑰𝒏𝒕𝒆𝒓𝒏 (𝒓𝒆𝒎𝒐𝒕𝒆)</div>
       <div class="item-content">
         <a href="#" class="item-title">𝑺.𝑷.𝑱𝒂𝒊𝒏 𝑰𝒏𝒔𝒕𝒊𝒕𝒖𝒕𝒆 𝒐𝒇 𝑴𝒂𝒏𝒂𝒈𝒆𝒎𝒆𝒏𝒕 𝒐𝒇
           𝑹𝒆𝒔𝒆𝒂𝒓𝒄𝒉<br><span class="item-date">Jan-Mar(2026)</span></a>
@@ -480,63 +663,182 @@
   <section id="paper-implementations">
     <h2>paper implementations & code</h2>
 
-    <div class="item">
-      <div class="item-tags"></div>
-      <div class="item-content">
-        <a href="#" class="item-title">Attention Is All You Need</a>
-        <p class="item-desc">Reproduced the Transformer model from scratch using multi-head self-attention and positional encoding, enabling parallel sequence processing and capturing long-range dependencies without recurrence.
-        </p>
+    <div class="papers-grid">
+      <div class="paper-item">
+        <div class="paper-item-inner">
+          <div class="paper-item-front">
+            <div class="item-tags"></div>
+            <div class="item-content">
+              <a href="#" class="item-title">Attention Is All You Need</a>
+              <a href="#" class="paper-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                  </path>
+                </svg>
+                view code
+              </a>
+            </div>
+          </div>
+          <div class="paper-item-back">
+            <div class="paper-item-back-content">
+              Built the Transformer model from scratch using multi-head self-attention and positional encoding.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-item">
+        <div class="paper-item-inner">
+          <div class="paper-item-front">
+            <div class="item-tags"></div>
+            <div class="item-content">
+              <a href="#" class="item-title">BERT</a>
+              <a href="#" class="paper-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                  </path>
+                </svg>
+                view code
+              </a>
+            </div>
+          </div>
+          <div class="paper-item-back">
+            <div class="paper-item-back-content">
+              Reproduced BERT and explored bidirectional contextual embeddings using masked language modeling.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-item">
+        <div class="paper-item-inner">
+          <div class="paper-item-front">
+            <div class="item-tags"></div>
+            <div class="item-content">
+              <a href="#" class="item-title">Visual BERT</a>
+              <a href="#" class="paper-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                  </path>
+                </svg>
+                view code
+              </a>
+            </div>
+          </div>
+          <div class="paper-item-back">
+            <div class="paper-item-back-content">
+              Multimodal Transformer that aligns text and image regions via self-attention.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-item">
+        <div class="paper-item-inner">
+          <div class="paper-item-front">
+            <div class="item-tags"></div>
+            <div class="item-content">
+              <a href="#" class="item-title">ALBERT</a>
+              <a href="#" class="paper-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                  </path>
+                </svg>
+                view code
+              </a>
+            </div>
+          </div>
+          <div class="paper-item-back">
+            <div class="paper-item-back-content">
+              A Lite BERT for self-supervised learning with parameter reduction techniques.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-item">
+        <div class="paper-item-inner">
+          <div class="paper-item-front">
+            <div class="item-tags"></div>
+            <div class="item-content">
+              <a href="#" class="item-title">Distil BERT</a>
+              <a href="#" class="paper-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                  </path>
+                </svg>
+                view code
+              </a>
+            </div>
+          </div>
+          <div class="paper-item-back">
+            <div class="paper-item-back-content">
+              Knowledge distillation to create a smaller, faster BERT model.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-item">
+        <div class="paper-item-inner">
+          <div class="paper-item-front">
+            <div class="item-tags"></div>
+            <div class="item-content">
+              <a href="#" class="item-title">GPT</a>
+              <a href="#" class="paper-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                  </path>
+                </svg>
+                view code
+              </a>
+            </div>
+          </div>
+          <div class="paper-item-back">
+            <div class="paper-item-back-content">
+              Generative pre-trained transformer for language generation tasks.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-item">
+        <div class="paper-item-inner">
+          <div class="paper-item-front">
+            <div class="item-tags"></div>
+            <div class="item-content">
+              <a href="#" class="item-title">RoBERTa</a>
+              <a href="#" class="paper-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                  </path>
+                </svg>
+                view code
+              </a>
+            </div>
+          </div>
+          <div class="paper-item-back">
+            <div class="paper-item-back-content">
+              Robustly optimized BERT with improved training procedures for better performance.
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="item">
-      <div class="item-tags"></div>
-      <div class="item-content">
-        <a href="#" class="item-title">BERT </a>
-        <p class="item-desc">Reproduced BERT and explored bidirectional contextual embeddings, analyzing how masked language modeling enables deep semantic and syntactic understanding of text.</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="item-tags"></div>
-      <div class="item-content">
-        <a href="#" class="item-title">Visual BERT</a>
-        <p class="item-desc">Implemented VisualBERT from scratch, a multimodal Transformer that aligns text and image regions via self-attention, enabling tasks like visual grounding, reasoning, and image-text matching.</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="item-tags"></div>
-      <div class="item-content">
-        <a href="#" class="item-title">ALBERT</a>
-        <p class="item-desc">full from-scratch implementation of single-shot object detection in pytorch.</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="item-tags"></div>
-      <div class="item-content">
-        <a href="#" class="item-title">Distil BERT</a>
-        <p class="item-desc">full from-scratch implementation of single-shot object detection in pytorch.</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="item-tags"></div>
-      <div class="item-content">
-        <a href="#" class="item-title">GPT</a>
-        <p class="item-desc">full from-scratch implementation of single-shot object detection in pytorch.</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="item-tags"></div>
-      <div class="item-content">
-        <a href="#" class="item-title">RoBERTa</a>
-        <p class="item-desc">full from-scratch implementation of single-shot object detection in pytorch.</p>
-      </div>
-    </div>
-
 
   </section>
 
@@ -574,7 +876,7 @@
         <span class="skill-btn">Joblib</span>
         <span class="skill-btn">DVC</span>
         <span class="skill-btn">RAG</span>
-       
+        
         <span class="skill-btn">Python</span>
         <span class="skill-btn">SQL</span>
         <span class="skill-btn">R</span>
@@ -653,7 +955,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    n
+    
     gsap.registerPlugin(ScrollTrigger);
 
     
@@ -690,7 +992,7 @@
 
     gsap.to('.meta', {
       duration: 1,
-      delay: (fullName.length * 0.04) + 0.7,
+      delay: (fullName.length * 0.04) + 0.7, 
       opacity: 1,
       y: 0,
       ease: 'power2.out',
@@ -749,7 +1051,7 @@
       );
     });
 
-    
+   
     gsap.utils.toArray('section h2').forEach((title) => {
       gsap.fromTo(title,
         {
@@ -800,7 +1102,7 @@
         return sum + btn.offsetWidth + 15; 
       }, 0);
 
-     
+      
       gsap.to('.skills-wrapper', {
         x: -firstSetWidth,
         duration: 25,
@@ -883,10 +1185,10 @@
 
     
     gsap.to('hr', {
-      width: '1020px',
+      width: '820px',
       duration: 3,
       delay: 2.5,
-      repeat: -1,
+      repeat: 0,
       yoyo: true,
       ease: 'sine.inOut',
     });
@@ -903,10 +1205,122 @@
         overwrite: 'auto',
       });
     });
+
+    
+    function createGlitter() {
+      const isDarkMode = !document.body.classList.contains('light-mode');
+      if (!isDarkMode) return;
+
+      const glitterContainer = document.getElementById('glitterContainer');
+      const body = document.body;
+      const bodyRect = body.getBoundingClientRect();
+
+      
+      const contentLeft = bodyRect.left;
+      const contentRight = bodyRect.right;
+      const contentTop = bodyRect.top;
+      const contentBottom = bodyRect.bottom;
+
+      function getRandomSpawnPosition() {
+        const choice = Math.random();
+        let startX, startY;
+
+        if (choice < 0.5) {
+          
+          startX = Math.random() * contentLeft;
+        } else {
+          
+          startX = contentRight + Math.random() * (window.innerWidth - contentRight);
+        }
+
+        
+        startY = window.innerHeight + Math.random() * 100;
+
+        return { startX, startY };
+      }
+
+      
+      for (let i = 0; i < 100; i++) {
+        const glitter = document.createElement('div');
+        glitter.className = 'glitter animate';
+
+        const pos = getRandomSpawnPosition();
+        const startX = pos.startX;
+        const startY = pos.startY;
+        const tx = (Math.random() - 0.5) * 100;
+        const duration = 2.5 + Math.random() * 2.5;
+        const floatDuration = 8 + Math.random() * 8;
+        const delay = Math.random() * 3;
+
+        glitter.style.left = startX + 'px';
+        glitter.style.top = startY + 'px';
+        glitter.style.setProperty('--tx', tx + 'px');
+        glitter.style.setProperty('--duration', duration + 's');
+        glitter.style.setProperty('--float-duration', floatDuration + 's');
+        glitter.style.animationDelay = delay + 's';
+
+        glitterContainer.appendChild(glitter);
+
+        
+        setTimeout(() => glitter.remove(), (delay + floatDuration) * 1000);
+      }
+
+      
+      setInterval(() => {
+        if (document.body.classList.contains('light-mode')) return;
+
+        if (glitterContainer.children.length < 100) {
+          const glitter = document.createElement('div');
+          glitter.className = 'glitter animate';
+
+          const pos = getRandomSpawnPosition();
+          const startX = pos.startX;
+          const startY = pos.startY;
+          const tx = (Math.random() - 0.5) * 100;
+          const duration = 2.5 + Math.random() * 2.5;
+          const floatDuration = 8 + Math.random() * 8;
+
+          glitter.style.left = startX + 'px';
+          glitter.style.top = startY + 'px';
+          glitter.style.setProperty('--tx', tx + 'px');
+          glitter.style.setProperty('--duration', duration + 's');
+          glitter.style.setProperty('--float-duration', floatDuration + 's');
+
+          glitterContainer.appendChild(glitter);
+
+          
+          setTimeout(() => glitter.remove(), floatDuration * 1000);
+        }
+      }, 300);
+    }
+
+    
+
+    
+    const paperItems = document.querySelectorAll('.paper-item');
+
+    paperItems.forEach(item => {
+      
+      item.addEventListener('mouseenter', function () {
+        this.classList.add('flipped');
+      });
+
+      item.addEventListener('mouseleave', function () {
+        this.classList.remove('flipped');
+      });
+
+      
+      item.addEventListener('click', function (e) {
+        
+        if (e.target.closest('a')) {
+          return;
+        }
+        this.classList.toggle('flipped');
+      });
+    });
   });
 </script>
 
 
-<script src="script.js"></script>
 
 </html>
