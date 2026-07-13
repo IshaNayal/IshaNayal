@@ -8,8 +8,13 @@
 | 🚀 Project |
 |------------|
 |  **Multi-Agent AI Research System** |
-| 🤖 **Local RAG Chatbot** |
-| 📊 **Influencer Analytics & GenAI** |
+|  **Local RAG Chatbot** |
+|  **Influencer Analytics & GenAI** |
+|  **Understanding a LLaMA-Style Transformer: My Learning Journey** |
+|  **ShakespeareGPT** |
+
+
+
 
 </div>
 
