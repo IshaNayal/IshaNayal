@@ -7,6 +7,7 @@
 <div align="center" style="margin-bottom: 20px;">
   <img src="https://asciify.its-apoorv.me/api/card?username=IshaNayal&card_font=Consolas%2C+monospace&text_color=%23d97706&border_style=dotted&border_color=emerald&anim_speed=4&ascii_density=classic" alt="asciify card" />
 </div>
+<h1 align="center">✨🌸 projects :) 🌸✨</h1>
 <h1 align="center">✨🌸 average coding session :) 🌸✨</h1>
 <div style="display: flex; gap: 10px; margin-left: -10px; margin-bottom: 20px;">
   <img width="150" height="150" alt="216656993-2f7ade25-348a-4925-95a8-fba437ed9bcd" src="https://github.com/user-attachments/assets/e33f986c-240f-4028-95d5-2af2f84ae91f" />
