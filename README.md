@@ -27,11 +27,7 @@
  
 
 </div>
-<h1 align="center">✨🌸git commit > git quit🌸✨</h1>
-<!-- Bottom Left Larger Image -->
-<div style="margin-left: -10px;">
-  <img width="400" height="400" alt="236544207-c4f427b3-be04-4cfe-a3d2-2eabb0d2de73" src="https://github.com/user-attachments/assets/ff91387a-cdb0-48be-a393-ac2c0ced8ade" />
-</div>
+
 
 
 
